@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Astromaze.Models.Cliente>
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<h1 style="color: #9932cc; font-weight: 700;">ASTROMAZE</h1>
+<p style="color: #303135; font-weight: 600;">Lista de Clientes cadastrados.</p>
+
+<a>
+    @Html.ActionLink("Cadastrar Cliente", "Create")
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Idade)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idade)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = (Model as List<Astromaze.Models.Cliente>).IndexOf(item) }) |
+                @Html.ActionLink("Visualizar", "Details", new { id = (Model as List<Astromaze.Models.Cliente>).IndexOf(item) }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = (Model as List<Astromaze.Models.Cliente>).IndexOf(item) }) |
+        </tr>
+    }
+
+</table>
